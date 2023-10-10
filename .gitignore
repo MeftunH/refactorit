@@ -1,5 +1,23 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# jetbrains
+.idea
+# vscode
+.vscode
+
+#webstorm
+*.iml
+*.ipr
+*.iws
+.idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+
+
 # dependencies
 /node_modules
 /.pnp
