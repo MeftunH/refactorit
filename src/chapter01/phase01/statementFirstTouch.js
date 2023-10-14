@@ -44,6 +44,28 @@ function amountForV1(perf, play) {
                 throw new Error(`unknown type: ${play.type}`);
         }
 }
+//v2
+function amountForV2(aPerformance, play) {
+    let result = 0;
+    switch (play.type) {
+        case "tragedy":
+            result = 40000;
+            if (aPerformance.audience > 30) {
+                result += 1000 * (aPerformance.audience - 30);
+            }
+            break;
+        case "comedy":
+            result = 30000;
+            if (aPerformance.audience > 20) {
+                result += 10000 + 500 * (aPerformance.audience - 20);
+            }
+            result += 300 * aPerformance.audience;
+            break;
+        default:
+            throw new Error(`unknown type: ${play.type}`);
+    }
+    return result;
+}
 
 function statement(invoice, plays) {
     let totalAmount = 0;
@@ -58,7 +80,7 @@ function statement(invoice, plays) {
 
     for (let perf of invoice.performances) {
         const play = plays[perf.playID];
-        let thisAmount = amountFor(perf, play);
+        let thisAmount = amountForV2(perf, play);
 
 
 
